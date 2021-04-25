@@ -1,0 +1,34 @@
+@prefix neo4j: <http://neo4j.com/myvoc#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix :      <http://example.org/> .
+
+neo4j:TweetShape a sh:NodeShape ;
+  sh:targetClass neo4j:Entity ;
+  sh:property [
+    sh:path neo4j:tweetId ;
+    sh:pattern "^[0-9]*$" ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string ;
+  ];
+  sh:property [
+    sh:path neo4j:userId ;
+    sh:pattern "^[0-9]*$" ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string ;
+  ];
+  sh:property [
+    sh:path neo4j:createdAt ;
+    sh:pattern "^[0-9]*$" ;
+    sh:pattern "^(?!0$).*" ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string ;
+  ];
+  sh:property [
+   sh:path schema:RELTYPE ;
+   sh:maxCount 1
+ ]
+ .
+
